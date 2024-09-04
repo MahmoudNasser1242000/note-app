@@ -16,3 +16,13 @@ export class SignupDto {
     @IsString()
     password: string;
 }
+
+export class SigninDto {
+    @IsEmail({}, {message: "Invalid enail"})
+    @IsNotEmpty()
+    email: string;
+
+    @IsString()
+    @IsNotEmpty()
+    password: string;
+}
