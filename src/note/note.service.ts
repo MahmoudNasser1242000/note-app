@@ -20,4 +20,9 @@ export class NoteService {
         const note = await this._noteModel.insertMany({...body, createdBy: user._id});
         res.status(201).json({msg: "Note added successfully", note})
     }
+
+    async getAllNotes(res: Response) {
+        const notes = await this._noteModel.find({}).populate({path: "createdBy"});
+        res.status(200).json({notes})
+    }
 }
